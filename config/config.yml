@@ -1,0 +1,129 @@
+# Network Threat Detection System Configuration
+
+# System settings
+system:
+  name: "Advanced Network Threat Detection System"
+  version: "2.0.0"
+
+# Network settings
+network:
+  interface: "Wi-Fi"  # Network interface to monitor
+  capture_timeout: 300  # Capture duration in seconds (5 minutes)
+
+# Data collection settings
+data_collection:
+  interface: "eth0"
+  packet_buffer_size: 10000
+  snapshot_length: 65535
+  promiscuous: true
+  timeout_ms: 1000
+
+# Processing settings
+processing:
+  max_workers: 4
+  buffer_size: 1000
+  batch_size: 100
+  traffic_threshold: 1000
+
+# Model settings
+models:
+  # Random Forest settings
+  random_forest:
+    n_estimators: 200
+    max_depth: 20
+    min_samples_split: 5
+    
+  # Autoencoder settings
+  autoencoder:
+    input_dim: 30
+    encoding_dim: 16
+    epochs: 50
+    batch_size: 32
+    dropout_rate: 0.2
+    
+  # DBSCAN settings
+  dbscan:
+    eps: 0.3
+    min_samples: 10
+    
+  # Hybrid model settings
+  hybrid:
+    anomaly_threshold: 0.3
+    ensemble_weights:
+      random_forest: 0.6
+      autoencoder: 0.4
+    
+  # Optuna optimization
+  optuna:
+    n_trials: 20
+    timeout: 600  # seconds
+    
+  # Explainability
+  explain:
+    n_samples: 100
+    feature_perturbation: "tree_path_dependent"
+
+# Threat detection settings
+detection:
+  # Threat pattern thresholds
+  ddos:
+    threshold: 1000  # packets per second
+    window: "1min"
+  port_scan:
+    threshold: 50  # unique ports per minute
+    window: "1min"
+  data_exfiltration:
+    threshold: 100  # MB per minute
+    window: "1min"
+
+# Behavioral analytics settings
+behavioral_analytics:
+  time_window: "1h"
+  min_samples: 1000
+  update_frequency: "5min"
+  clustering:
+    n_clusters: 5
+    random_state: 42
+
+# Logging settings
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/app.log"
+  max_size: 10485760  # 10MB
+  backup_count: 5
+
+# Visualization settings
+visualization:
+  plots:
+    dpi: 300
+    style: "seaborn"
+    color_palette: "deep"
+  dashboard:
+    update_interval: 5  # seconds
+    max_points: 1000
+    
+# Alert settings
+alerts:
+  email:
+    enabled: true
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+    sender: "alerts@example.com"
+    recipients: ["admin@example.com"]
+  webhook:
+    enabled: false
+    url: "https://api.example.com/alerts"
+    method: "POST"
+    
+# Storage settings
+storage:
+  database:
+    type: "sqlite"
+    path: "data/threats.db"
+  reports:
+    path: "reports"
+    format: "pdf"
+  models:
+    path: "models"
+    format: "pkl"

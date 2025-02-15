@@ -1,0 +1,88 @@
+# Network Configuration
+network:
+  interface: eth0  # Network interface to monitor
+  capture_duration: 3600  # Duration in seconds for each capture session
+  packet_limit: 10000  # Maximum number of packets to capture per session
+
+# Model Configuration
+models:
+  supervised:
+    model_type: random_forest
+    n_estimators: 100
+    max_depth: 10
+    random_state: 42
+  
+  unsupervised:
+    model_type: isolation_forest
+    n_estimators: 100
+    contamination: 0.1
+    random_state: 42
+  
+  behavioral:
+    model_type: kmeans
+    n_clusters: 5
+    random_state: 42
+  
+  autoencoder:
+    encoding_dim: 32
+    epochs: 50
+    batch_size: 32
+    validation_split: 0.2
+
+# Threat Detection Thresholds
+thresholds:
+  supervised_threshold: 0.8  # Probability threshold for supervised detection
+  anomaly_threshold: 0.95  # Percentile threshold for anomaly detection
+  behavioral_threshold: 3  # Standard deviations from cluster center
+
+# Alert Configuration
+alerts:
+  email:
+    enabled: true
+    smtp_server: smtp.gmail.com
+    smtp_port: 587
+    sender: your-email@example.com
+    recipients:
+      - security-team@example.com
+      - admin@example.com
+    username: your-email@example.com
+    password: your-app-specific-password  # Use environment variable in production
+  
+  webhooks:
+    - type: slack
+      url: https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK
+      enabled: true
+    
+    - type: teams
+      url: https://your-organization.webhook.office.com/webhookb2/your-teams-webhook
+      enabled: true
+
+# Logging Configuration
+logging:
+  level: INFO
+  file_path: ../logs/
+  max_size: 10MB
+  backup_count: 5
+
+# Storage Configuration
+storage:
+  data_dir: ../data/
+  model_dir: ../models/
+  max_storage: 10GB
+  retention_days: 30
+
+# API Configuration (if implementing a REST API)
+api:
+  host: 0.0.0.0
+  port: 8000
+  debug: false
+  secret_key: your-secret-key  # Use environment variable in production
+  allowed_origins:
+    - http://localhost:3000
+    - https://your-domain.com
+
+# Performance Configuration
+performance:
+  max_threads: 4
+  batch_size: 1000
+  cache_size: 1GB
