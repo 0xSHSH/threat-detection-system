@@ -85,7 +85,7 @@ git --version
 ### 3. Repository Setup
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/threat-detection-system.git
+git clone https://github.com/0xSHSH/threat-detection-system.git
 cd threat-detection-system
 
 # Create virtual environment
@@ -358,9 +358,9 @@ for chunk in pd.read_csv('large_file.csv', chunksize=1000):
 ## Support
 
 ### Getting Help
-1. Check the [Issues](https://github.com/yourusername/threat-detection-system/issues) page
-2. Join our [Discord](https://discord.gg/yourinvite)
-3. Email: support@example.com
+1. Check the [Issues](https://github.com/0xSHSH/threat-detection-system/issues) page
+2. Join our [Discord](https://discord.gg/0xSHSH)
+3. Email: shanmukhsharma667@gmail.com
 
 ### Reporting Bugs
 1. Use the issue template
