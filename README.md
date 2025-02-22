@@ -377,8 +377,8 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) file for 
 If you use this system in your research, please cite:
 ```bibtex
 @software{threat_detection_system,
-  author = {Your Name},
+  author = {Shanmukh Sharma},
   title = {Advanced Network Threat Detection System},
   year = {2025},
-  url = {https://github.com/yourusername/threat-detection-system}
+  url = {https://github.com/0xSHSH/threat-detection-system}
 }
